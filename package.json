@@ -1,0 +1,12 @@
+
+{
+  "name": "@atsoft/crud-schematic",
+  "version": "1.0.0",
+  "schematics": "./collection.json",
+  "main": "index.js",
+  "keywords": ["schematics", "ngrx", "crud", "angular", "ionic"],
+  "files": ["collection.json", "crud/**/*"],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
