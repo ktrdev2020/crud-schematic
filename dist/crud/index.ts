@@ -1,4 +1,3 @@
-
 import {
   Rule,
   SchematicContext,
@@ -8,8 +7,10 @@ import {
   template,
   move,
   mergeWith,
-  chain
+  chain,
+  renameTemplateFiles // ✅ เพิ่มตัวนี้
 } from '@angular-devkit/schematics';
+
 import { strings } from '@angular-devkit/core';
 
 export function crud(options: any): Rule {
@@ -25,6 +26,7 @@ export function crud(options: any): Rule {
         ...options,
         modelFields,
       }),
+      renameTemplateFiles(), // ✅ แปลงไฟล์ .ts.template → .ts และ .html.template → .html
       move('src/app/' + strings.dasherize(options.name))
     ]);
     return chain([mergeWith(tmpl)]);

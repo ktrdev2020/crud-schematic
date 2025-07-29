@@ -11,6 +11,7 @@ function crud(options) {
     return (tree, context) => {
         const tmpl = (0, schematics_1.apply)((0, schematics_1.url)('./files'), [
             (0, schematics_1.template)(Object.assign(Object.assign(Object.assign({}, core_1.strings), options), { modelFields })),
+            (0, schematics_1.renameTemplateFiles)(), // ✅ แปลงไฟล์ .ts.template → .ts และ .html.template → .html
             (0, schematics_1.move)('src/app/' + core_1.strings.dasherize(options.name))
         ]);
         return (0, schematics_1.chain)([(0, schematics_1.mergeWith)(tmpl)]);
