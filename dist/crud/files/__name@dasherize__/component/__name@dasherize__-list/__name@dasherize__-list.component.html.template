@@ -10,7 +10,7 @@
 
 <ion-content>
   <ion-list *ngIf="(items$ | async) as items">
-    <ion-item *ngFor="let item of items" [routerLink]="['/item', item.id]">
+    <ion-item *ngFor="let item of items" [routerLink]="[item.id]">
       {{ item.id }} - {{ item.name }}
     </ion-item>
   </ion-list>
