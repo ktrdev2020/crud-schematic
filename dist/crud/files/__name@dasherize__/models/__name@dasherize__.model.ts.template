@@ -1,0 +1,6 @@
+
+export interface {{ classify(name) }} {
+<% modelFields.forEach(field => { }}
+  {{ field.key }}: {{ field.type }};
+<% }); }}
+}

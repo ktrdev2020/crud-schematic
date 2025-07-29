@@ -1,0 +1,33 @@
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { {{ classify(name) }} } from '../models/{{ dasherize(name) }}.model';
+import { Observable } from 'rxjs';
+import { EnvironmentService } from 'src/app/shared/services/environment.service';
+
+@Injectable({ providedIn: 'root' })
+export class {{ classify(name) }}Service {
+  private baseUrl = this.env.apiUrl + '/{{ classify(name) }}';
+
+  constructor(private http: HttpClient, private env: EnvironmentService) {}
+
+  getAll(): Observable<{{ classify(name) }}[]> {
+    return this.http.get<{{ classify(name) }}[]>(this.baseUrl);
+  }
+
+  getById(id: number | string): Observable<{{ classify(name) }}> {
+    return this.http.get<{{ classify(name) }}>(`${this.baseUrl}/${id}`);
+  }
+
+  create(data: {{ classify(name) }}): Observable<any> {
+    return this.http.post(this.baseUrl, data);
+  }
+
+  update(id: number | string, data: {{ classify(name) }}): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, data);
+  }
+
+  delete(id: number | string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+}

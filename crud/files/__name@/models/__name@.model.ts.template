@@ -1,3 +1,0 @@
-export interface {{ '{{' {{ '}}' }} classify name {{ '}}' }}Model {
-  {{ '{{' {{ '}}' }}~ modelFields.map(f => `${f.key}: ${f.type};`).join('\n  ') ~{{ '}}' }}
-}
