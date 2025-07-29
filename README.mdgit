@@ -1,0 +1,1 @@
+"# crud-schematic"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/ktrdev2020/crud-schematic.gitgit push -u origin main
