@@ -1,1 +1,35 @@
-// store/effects/__name@.effects.ts.template
+
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, mergeMap, of } from 'rxjs';
+import * as {{ classify name }}Actions from '../actions/{{ dasherize name }}.actions';
+import { {{ classify name }}Service } from '../../services/{{ dasherize name }}.service';
+
+@Injectable()
+export class {{ classify name }}Effects {
+  constructor(private actions$: Actions, private service: {{ classify name }}Service) {}
+
+  load$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType({{ classify name }}Actions.load{{ classify name }}),
+      mergeMap(() =>
+        this.service.getAll().pipe(
+          map(data => {{ classify name }}Actions.load{{ classify name }}Success({ data })),
+          catchError(error => of({{ classify name }}Actions.load{{ classify name }}Failure({ error })))
+        )
+      )
+    )
+  );
+
+  add$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType({{ classify name }}Actions.add{{ classify name }}),
+      mergeMap(({ data }) =>
+        this.service.create(data).pipe(
+          map(res => {{ classify name }}Actions.add{{ classify name }}Success({ data: res })),
+          catchError(error => of({{ classify name }}Actions.add{{ classify name }}Failure({ error })))
+        )
+      )
+    )
+  );
+}

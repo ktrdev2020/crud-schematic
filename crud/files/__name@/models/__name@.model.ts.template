@@ -1,1 +1,3 @@
-// store/models/__name@.model.ts.template
+export interface {{ classify name }}Model {
+  {{~ modelFields.map(f => `${f.key}: ${f.type};`).join('\n  ') ~}}
+}

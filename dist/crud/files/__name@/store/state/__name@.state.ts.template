@@ -1,1 +1,7 @@
-// store/state/__name@.state.ts.template
+import { EntityState } from '@ngrx/entity';
+import { {{ classify name }}Model } from '../../models/{{ dasherize name }}.model';
+
+export interface {{ classify name }}State extends EntityState<{{ classify name }}Model> {
+  loading: boolean;
+  error: string | null;
+}

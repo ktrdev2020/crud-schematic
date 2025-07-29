@@ -1,1 +1,7 @@
-// component/__name@-add/__name@-add.component.html.template
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <ion-item *ngFor="let field of fields">
+    <ion-label position="stacked">{{ '{{' }} field.key {{ '}}' }}</ion-label>
+    <ion-input [formControlName]="field.key"></ion-input>
+  </ion-item>
+  <ion-button expand="block" type="submit">Save</ion-button>
+</form>
