@@ -2,22 +2,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { select{{ classify name }}ById } from '../../store/selectors/{{ dasherize name }}.selectors';
-import { load{{ classify name }} } from '../../store/actions/{{ dasherize name }}.actions';
+import { select{{ '{{' {{ '}}' }} classify name {{ '}}' }}ById } from '../../store/selectors/{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}.selectors';
+import { load{{ '{{' {{ '}}' }} classify name {{ '}}' }} } from '../../store/actions/{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}.actions';
 
 @Component({
-  selector: 'app-{{ dasherize name }}-details',
-  templateUrl: './{{ dasherize name }}-details.component.html',
+  selector: 'app-{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}-details',
+  templateUrl: './{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}-details.component.html',
   standalone: false
 })
-export class {{ classify name }}DetailsComponent implements OnInit {
+export class {{ '{{' {{ '}}' }} classify name {{ '}}' }}DetailsComponent implements OnInit {
   id!: number;
-  data$ = this.store.select(select{{ classify name }}ById(this.id));
+  data$ = this.store.select(select{{ '{{' {{ '}}' }} classify name {{ '}}' }}ById(this.id));
 
   constructor(private route: ActivatedRoute, private store: Store) {}
 
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
-    this.store.dispatch(load{{ classify name }}());
+    this.store.dispatch(load{{ '{{' {{ '}}' }} classify name {{ '}}' }}());
   }
 }

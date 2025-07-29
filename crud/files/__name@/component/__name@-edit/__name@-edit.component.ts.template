@@ -3,15 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { update{{ classify name }}, load{{ classify name }} } from '../../store/actions/{{ dasherize name }}.actions';
-import { select{{ classify name }}ById } from '../../store/selectors/{{ dasherize name }}.selectors';
+import { update{{ '{{' {{ '}}' }} classify name {{ '}}' }}, load{{ '{{' {{ '}}' }} classify name {{ '}}' }} } from '../../store/actions/{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}.actions';
+import { select{{ '{{' {{ '}}' }} classify name {{ '}}' }}ById } from '../../store/selectors/{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}.selectors';
 
 @Component({
-  selector: 'app-{{ dasherize name }}-edit',
-  templateUrl: './{{ dasherize name }}-edit.component.html',
+  selector: 'app-{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}-edit',
+  templateUrl: './{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}-edit.component.html',
   standalone: false
 })
-export class {{ classify name }}EditComponent implements OnInit {
+export class {{ '{{' {{ '}}' }} classify name {{ '}}' }}EditComponent implements OnInit {
   form!: FormGroup;
   id!: number;
 
@@ -19,17 +19,17 @@ export class {{ classify name }}EditComponent implements OnInit {
 
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
-    this.store.dispatch(load{{ classify name }}());
-    this.store.select(select{{ classify name }}ById(this.id)).subscribe(data => {
+    this.store.dispatch(load{{ '{{' {{ '}}' }} classify name {{ '}}' }}());
+    this.store.select(select{{ '{{' {{ '}}' }} classify name {{ '}}' }}ById(this.id)).subscribe(data => {
       if (data) {
-        this.form = this.fb.group({ {{~ modelFields.map(f => `${f.key}: [data.${f.key}]`).join(',\n') ~}} });
+        this.form = this.fb.group({ {{ '{{' {{ '}}' }}~ modelFields.map(f => `${f.key}: [data.${f.key}]`).join(',\n') ~{{ '}}' }} });
       }
     });
   }
 
   submit() {
     if (this.form.valid) {
-      this.store.dispatch(update{{ classify name }}({ id: this.id, data: this.form.value }));
+      this.store.dispatch(update{{ '{{' {{ '}}' }} classify name {{ '}}' }}({ id: this.id, data: this.form.value }));
     }
   }
 }

@@ -1,21 +1,21 @@
 
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { {{ classify name }}State } from '../state/{{ dasherize name }}.state';
-import * as fromReducer from '../reducers/{{ dasherize name }}.reducer';
+import { {{ '{{' {{ '}}' }} classify name {{ '}}' }}State } from '../state/{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}.state';
+import * as fromReducer from '../reducers/{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}.reducer';
 
-export const select{{ classify name }}State = createFeatureSelector<{{ classify name }}State>('{{ camelize name }}');
+export const select{{ '{{' {{ '}}' }} classify name {{ '}}' }}State = createFeatureSelector<{{ '{{' {{ '}}' }} classify name {{ '}}' }}State>('{{ '{{' {{ '}}' }} camelize name {{ '}}' }}');
 
-export const selectAll{{ classify name }} = createSelector(
-  select{{ classify name }}State,
+export const selectAll{{ '{{' {{ '}}' }} classify name {{ '}}' }} = createSelector(
+  select{{ '{{' {{ '}}' }} classify name {{ '}}' }}State,
   fromReducer.selectAll
 );
 
-export const select{{ classify name }}Loading = createSelector(
-  select{{ classify name }}State,
+export const select{{ '{{' {{ '}}' }} classify name {{ '}}' }}Loading = createSelector(
+  select{{ '{{' {{ '}}' }} classify name {{ '}}' }}State,
   state => state.loading
 );
 
-export const select{{ classify name }}ById = (id: number) => createSelector(
-  select{{ classify name }}State,
+export const select{{ '{{' {{ '}}' }} classify name {{ '}}' }}ById = (id: number) => createSelector(
+  select{{ '{{' {{ '}}' }} classify name {{ '}}' }}State,
   state => fromReducer.selectEntities(state)[id]
 );

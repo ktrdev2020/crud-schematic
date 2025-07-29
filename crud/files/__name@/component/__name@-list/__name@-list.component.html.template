@@ -1,6 +1,6 @@
 <ion-list *ngIf="items$ | async as items">
   <ion-item *ngFor="let item of items" [routerLink]="[item.id]">
-    {{ '{{' }} item | json {{ '}}' }}
+    {{ '{{' {{ '}}' }} '{{ '{{' {{ '}}' }}' {{ '}}' }} item | json {{ '{{' {{ '}}' }} '{{ '}}' }}' {{ '}}' }}
   </ion-item>
 </ion-list>
 <ion-button routerLink="add">Add New</ion-button>
