@@ -1,0 +1,15 @@
+
+import { createAction, props } from '@ngrx/store';
+import { <%= classify(name) %> } from '../../models/<%= dasherize(name) %>.model';
+
+export const load<%= classify(name) %>s = createAction('[<%= classify(name) %>] Load');
+export const load<%= classify(name) %>sSuccess = createAction('[<%= classify(name) %>] Load Success', props<{ data: <%= classify(name) %>[] }>());
+export const load<%= classify(name) %>sFailure = createAction('[<%= classify(name) %>] Load Failure', props<{ error: any }>());
+
+export const load<%= classify(name) %>ById = createAction('[<%= classify(name) %>] Load By Id', props<{ id: number | string }>());
+export const load<%= classify(name) %>ByIdSuccess = createAction('[<%= classify(name) %>] Load By Id Success', props<{ data: <%= classify(name) %> }>());
+export const load<%= classify(name) %>ByIdFailure = createAction('[<%= classify(name) %>] Load By Id Failure', props<{ error: any }>());
+
+export const create<%= classify(name) %> = createAction('[<%= classify(name) %>] Create', props<{ data: <%= classify(name) %> }>());
+export const update<%= classify(name) %> = createAction('[<%= classify(name) %>] Update', props<{ id: number | string, data: <%= classify(name) %> }>());
+export const delete<%= classify(name) %> = createAction('[<%= classify(name) %>] Delete', props<{ id: number | string }>());

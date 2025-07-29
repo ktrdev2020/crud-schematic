@@ -8,6 +8,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v3
@@ -17,15 +18,20 @@ jobs:
         with:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
-          scope: "@your-scope"
+          scope: "@ktrdev2020"
 
-      - name: 🛠 Install & Test
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🧱 Build schematic
+        run: npm run build
+
+      - name: ✅ Test schematic locally
         run: |
           npm install -g @angular-devkit/schematics-cli
-          npm install
-          schematics .:crud --name=test --model="id:number,name:string"
+          schematics ./dist:crud --name=test --model="id:number,name:string"
 
-      - name: 🚀 Publish to GitHub Packages (GHCR)
+      - name: 🚀 Publish to GHCR
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

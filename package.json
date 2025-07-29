@@ -1,6 +1,6 @@
 {
   "name": "@ktrdev2020/crud-schematic",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Reusable Angular + Ionic NgRx CRUD schematic",
   "schematics": "./dist/collection.json",
   "main": "dist/index.js",
@@ -16,12 +16,12 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && xcopy crud dist\\crud /E /I /Y && copy collection.json dist\\collection.json",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@angular-devkit/core": "^19.2.15",
-    "@angular-devkit/schematics": "^19.2.15",
+    "@angular-devkit/core": "^16.2.0",
+    "@angular-devkit/schematics": "^16.2.0",
     "typescript": "^5.0.0"
   },
   "publishConfig": {
