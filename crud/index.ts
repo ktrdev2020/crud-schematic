@@ -34,7 +34,9 @@ export function crud(options: any): Rule {
     const tmpl = apply(url('./files'), [
       template({
         ...strings,
-        ...options
+        ...options,
+        dasherize_name: strings.dasherize(options.name),
+        classify_name: strings.classify(options.name),
       }),
       renameTemplateFiles(), // ✅ เปลี่ยนชื่อไฟล์ .template → ไฟล์จริง
       move(targetPath)

@@ -18,7 +18,7 @@ function crud(options) {
         context.logger.info(`🛠 Classify: ${classifiedName}`);
         context.logger.info(`🔤 Dasherize: ${dasherizedName}`);
         const tmpl = (0, schematics_1.apply)((0, schematics_1.url)('./files'), [
-            (0, schematics_1.template)(Object.assign(Object.assign({}, core_1.strings), options)),
+            (0, schematics_1.template)(Object.assign(Object.assign(Object.assign({}, core_1.strings), options), { dasherize_name: core_1.strings.dasherize(options.name), classify_name: core_1.strings.classify(options.name) })),
             (0, schematics_1.renameTemplateFiles)(), // ✅ เปลี่ยนชื่อไฟล์ .template → ไฟล์จริง
             (0, schematics_1.move)(targetPath)
         ]);
