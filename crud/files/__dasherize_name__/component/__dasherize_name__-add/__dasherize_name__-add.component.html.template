@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>{{ classify_name }}</ion-title>
+    <ion-title>{{ classify name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
