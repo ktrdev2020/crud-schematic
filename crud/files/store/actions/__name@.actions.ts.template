@@ -1,0 +1,72 @@
+import { createAction, props } from '@ngrx/store';
+import { {{ '{{' }} classify name {{ '}}' }}, Create{{ '{{' }} classify name {{ '}}' }}Dto, Update{{ '{{' }} classify name {{ '}}' }}Dto } from '../../models/{{ '{{' }} dasherize name {{ '}}' }}.model';
+
+// 🔁 Load All
+export const load{{ '{{' }} classify name {{ '}}' }}s = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Load All',
+  props<{ limit?: number; offset?: number }>()
+);
+export const load{{ '{{' }} classify name {{ '}}' }}sSuccess = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Load Success',
+  props<{ data: {{ '{{' }} classify name {{ '}}' }}[]; total: number }>()
+);
+export const load{{ '{{' }} classify name {{ '}}' }}sFailure = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Load Failure',
+  props<{ error: string }>()
+);
+
+// ✅ Load By ID (ใช้ในหน้า details)
+export const load{{ '{{' }} classify name {{ '}}' }}ById = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Load By ID',
+  props<{ id: number }>()
+);
+export const load{{ '{{' }} classify name {{ '}}' }}ByIdSuccess = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Load By ID Success',
+  props<{ data: {{ '{{' }} classify name {{ '}}' }} }>()
+);
+export const load{{ '{{' }} classify name {{ '}}' }}ByIdFailure = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Load By ID Failure',
+  props<{ error: string }>()
+);
+
+// ➕ Add
+export const add{{ '{{' }} classify name {{ '}}' }} = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Add',
+  props<{ data: Create{{ '{{' }} classify name {{ '}}' }}Dto }>()
+);
+export const add{{ '{{' }} classify name {{ '}}' }}Success = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Add Success',
+  props<{ data: {{ '{{' }} classify name {{ '}}' }} }>()
+);
+export const add{{ '{{' }} classify name {{ '}}' }}Failure = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Add Failure',
+  props<{ error: string }>()
+);
+
+// ✏️ Update
+export const update{{ '{{' }} classify name {{ '}}' }} = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Update',
+  props<{ id: number; data: Update{{ '{{' }} classify name {{ '}}' }}Dto }>()
+);
+export const update{{ '{{' }} classify name {{ '}}' }}Success = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Update Success',
+  props<{ data: {{ '{{' }} classify name {{ '}}' }} }>()
+);
+export const update{{ '{{' }} classify name {{ '}}' }}Failure = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Update Failure',
+  props<{ error: string }>()
+);
+
+// ❌ Delete
+export const delete{{ '{{' }} classify name {{ '}}' }} = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Delete',
+  props<{ id: string }>()
+);
+export const delete{{ '{{' }} classify name {{ '}}' }}Success = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Delete Success',
+  props<{ id: string }>()
+);
+export const delete{{ '{{' }} classify name {{ '}}' }}Failure = createAction(
+  '[{{ '{{' }} classify name {{ '}}' }}] Delete Failure',
+  props<{ error: string }>()
+);

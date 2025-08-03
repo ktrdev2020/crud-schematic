@@ -1,0 +1,71 @@
+import { createReducer, on } from '@ngrx/store';
+import * as {{ '{{' }} classify name {{ '}}' }}Actions from '../actions/{{ '{{' }} dasherize name {{ '}}' }}.actions';
+import {
+  adapter,
+  initialState,
+  {{ '{{' }} classify name {{ '}}' }}State
+} from '../state/{{ '{{' }} dasherize name {{ '}}' }}.state';
+
+export const {{ '{{' }} dasherize name {{ '}}' }}Reducer = createReducer(
+  initialState,
+
+  // 🔁 Load All
+  on({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}s, (state, { limit, offset }) => ({
+    ...state,
+    loading: true,
+    limit: limit ?? state.limit,
+    offset: offset ?? state.offset,
+    currentPage:
+      limit && offset !== undefined ? Math.floor(offset / limit) + 1 : state.currentPage,
+  })),
+
+  on({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}sSuccess, (state, { data, total }) =>
+    adapter.setAll(data, {
+      ...state,
+      loading: false,
+      total,
+    })
+  ),
+
+  on({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}sFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+
+  // 🔍 Load By ID
+  on({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}ById, (state, { id }) => ({
+    ...state,
+    loading: true,
+    selectedId: id.toString(),
+  })),
+
+  on({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}ByIdSuccess, (state, { data }) =>
+    adapter.upsertOne(data, {
+      ...state,
+      loading: false,
+      error: null,
+    })
+  ),
+
+  on({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}ByIdFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+
+  // ➕ Add
+  on({{ '{{' }} classify name {{ '}}' }}Actions.add{{ '{{' }} classify name {{ '}}' }}Success, (state, { data }) =>
+    adapter.addOne(data, state)
+  ),
+
+  // ✏️ Update
+  on({{ '{{' }} classify name {{ '}}' }}Actions.update{{ '{{' }} classify name {{ '}}' }}Success, (state, { data }) =>
+    adapter.updateOne({ id: data.id, changes: data }, state)
+  ),
+
+  // ❌ Delete
+  on({{ '{{' }} classify name {{ '}}' }}Actions.delete{{ '{{' }} classify name {{ '}}' }}Success, (state, { id }) =>
+    adapter.removeOne(id, state)
+  )
+);

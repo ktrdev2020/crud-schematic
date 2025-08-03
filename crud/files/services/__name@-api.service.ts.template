@@ -1,0 +1,38 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { {{ '{{' }} classify name {{ '}}' }}Dto, Create{{ '{{' }} classify name {{ '}}' }}Dto, Update{{ '{{' }} classify name {{ '}}' }}Dto } from '../models/{{ '{{' }} dasherize name {{ '}}' }}.model';
+import { environment } from 'src/environments/environment';
+
+@Injectable({ providedIn: 'root' })
+export class {{ '{{' }} classify name {{ '}}' }}ApiService {
+  private apiUrl = `${environment.apiUrl}/{{ '{{' }} classify name {{ '}}' }}`;
+
+  constructor(private http: HttpClient) {}
+
+  private get apiUrlEndpoint(): string {
+    return this.apiUrl;
+  }
+
+  getAll(limit = 10, offset = 0): Observable<{ total: number; data: {{ '{{' }} classify name {{ '}}' }}Dto[] }> {
+    return this.http.get<{ total: number; data: {{ '{{' }} classify name {{ '}}' }}Dto[] }>(
+      `${this.apiUrlEndpoint}?limit=${limit}&offset=${offset}`
+    );
+  }
+
+  getById(id: number): Observable<{{ '{{' }} classify name {{ '}}' }}Dto> {
+    return this.http.get<{{ '{{' }} classify name {{ '}}' }}Dto>(`${this.apiUrlEndpoint}/${id}`);
+  }
+
+  create(data: Create{{ '{{' }} classify name {{ '}}' }}Dto): Observable<any> {
+    return this.http.post<any>(this.apiUrlEndpoint, data);
+  }
+
+  update(id: number, data: Update{{ '{{' }} classify name {{ '}}' }}Dto): Observable<any> {
+    return this.http.put(`${this.apiUrlEndpoint}/${id}`, data);
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrlEndpoint}/${id}`);
+  }
+}
