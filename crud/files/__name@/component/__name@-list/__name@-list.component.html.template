@@ -18,15 +18,15 @@
   </ion-refresher>
 
   <!-- ✅ Loading -->
-  <app-loading *ngIf="loading$ \| async"></app-loading>
+  <app-loading *ngIf="loading$ | async"></app-loading>
 
   <!-- ✅ Error -->
-  <ion-note color="danger" *ngIf="error$ \| async as error" class="ion-padding">
+  <ion-note color="danger" *ngIf="error$ | async as error" class="ion-padding">
     {{ '{{' }} error {{ '}}' }}
   </ion-note>
 
   <!-- ✅ รายการข้อมูล -->
-  <ng-container *ngIf="devices$ \| async as devices">
+  <ng-container *ngIf="devices$ | async as devices">
     <ng-container *ngIf="devices.length > 0; else noDevices">
       <ion-list>
         <ion-item *ngFor="let data of items" button detail [routerLink]="['./' + data.id]" [state]="{ data: data }">
@@ -50,8 +50,8 @@
 <!-- ✅ Pagination Footer -->
 <ion-footer>
   <ion-toolbar>
-    <ng-container *ngIf="(currentPage$ \| async) as currentPage">
-      <ng-container *ngIf="(totalPages$ \| async) as totalPages">
+    <ng-container *ngIf="(currentPage$ | async) as currentPage">
+      <ng-container *ngIf="(totalPages$ | async) as totalPages">
         <ion-grid>
           <ion-row class="ion-align-items-center ion-justify-content-between">
             <ion-col size="3" class="ion-text-start">

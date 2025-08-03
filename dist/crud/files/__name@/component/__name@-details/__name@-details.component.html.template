@@ -43,7 +43,7 @@
   </ng-container>
 
   <!-- ✅ Spinner โหลด -->
-  <app-loading *ngIf="loading$ \| async"></app-loading>
+  <app-loading *ngIf="loading$ | async"></app-loading>
 
   <!-- ❌ ไม่มีข้อมูล -->
   <ng-template #noDevice>
