@@ -16,16 +16,19 @@ import * as path from 'path';
 
 export function crud(options: any): Rule {
   return (tree: Tree, context: SchematicContext) => {
-    // ✅ Log name + dasherize
+    if (!options.name) {
+      throw new Error('❌ Missing required option: name');
+    }
+
     const name = options.name;
     const dasherizedName = strings.dasherize(name);
+    const classifiedName = strings.classify(name);
     const targetPath = `src/app/${dasherizedName}`;
-    const templateFile = `./files/${dasherizedName}`;
 
     context.logger.info(`🚀 Starting schematic for: ${name}`);
     context.logger.info(`📦 Output path: ${targetPath}`);
     context.logger.info(`📁 Template path: ./files`);
-    context.logger.info(`🛠 Classify: ${strings.classify(name)}`);
+    context.logger.info(`🛠 Classify: ${classifiedName}`);
     context.logger.info(`🔤 Dasherize: ${dasherizedName}`);
 
     const tmpl = apply(url('./files'), [
@@ -33,12 +36,12 @@ export function crud(options: any): Rule {
         ...strings,
         ...options
       }),
-      renameTemplateFiles(),
+      renameTemplateFiles(), // ✅ เปลี่ยนชื่อไฟล์ .template → ไฟล์จริง
       move(targetPath)
     ]);
 
     return chain([
-      mergeWith(tmpl, MergeStrategy.Overwrite) // ✅ บังคับ overwrite เพื่อเคลียร์ cache เก่า
+      mergeWith(tmpl, MergeStrategy.Overwrite)
     ]);
   };
 }
