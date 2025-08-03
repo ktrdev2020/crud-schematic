@@ -22,18 +22,18 @@
 
   <!-- ✅ Error -->
   <ion-note color="danger" *ngIf="error$ \| async as error" class="ion-padding">
-    {{ error }}
+    {{ '{{' }} error {{ '}}' }}
   </ion-note>
 
   <!-- ✅ รายการข้อมูล -->
   <ng-container *ngIf="devices$ \| async as devices">
     <ng-container *ngIf="devices.length > 0; else noDevices">
       <ion-list>
-        <ion-item *ngFor="let data of items" button detail routerLink="./{{data.id}}" [state]="{data : data}">
+        <ion-item *ngFor="let data of items" button detail [routerLink]="['./' + data.id]" [state]="{ data: data }">
             <ion-label>
-              {{data.Id}}
+              {{ '{{' }} data.Id {{ '}}' }}
             </ion-label>
-            {{ data.Name }}
+            {{ '{{' }} data.Name {{ '}}' }}
         </ion-item>
       </ion-list>
     </ng-container>
@@ -63,8 +63,8 @@
 
             <ion-col size="6" class="ion-text-center">
               <ion-text>
-                หน้า <strong>{{ currentPage }}</strong> จาก
-                <strong>{{ totalPages }}</strong>
+                หน้า <strong>{{ '{{' }} currentPage {{ '}}' }}</strong> จาก
+                <strong>{{ '{{' }} totalPages {{ '}}' }}</strong>
               </ion-text>
             </ion-col>
 
