@@ -49,7 +49,7 @@ export const select<%= classify(name) %>TotalPages = createSelector(
 
 // ✅ Select by ID (dynamic)
 export const select<%= classify(name) %>ById = (id: string) =>
-  createSelector(select<%= classify(name) %>State, state => state.entities[id]);
+  createSelector(select<%= classify(name) %>State, state => state.entities[id] as <%= classify(name) %>DetailDto);
 
 // ✅ Filtered (Predicate)
 export const select<%= classify(name) %>Where = (predicate: (g: any) => boolean) =>

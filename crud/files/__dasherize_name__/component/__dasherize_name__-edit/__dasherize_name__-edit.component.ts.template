@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Create<%= classify(name) %>Dto, Update<%= classify(name) %>Dto } from '../../models/<%= dasherize(name) %>.model';
-import * as <%= classify(name) %>Actions from 'src/app/admin/store/actions/<%= dasherize(name) %>.actions';
+import { <%= classify(name) %>Dto, Create<%= classify(name) %>Dto, Update<%= classify(name) %>Dto } from '../../models/<%= dasherize(name) %>.model';
+import * as <%= classify(name) %>Actions from '../../store/actions/<%= dasherize(name) %>.actions';
 import { <%= classify(name) %>ApiService } from '../../services/<%= dasherize(name) %>-api.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class <%= classify(name) %>EditComponent implements OnInit {
       return;
     }
 
-    this.id = data.id;
+    this.id =  parseInt(data.Id);
 
     this.form = this.fb.group({
       Id: [null, Validators.required],

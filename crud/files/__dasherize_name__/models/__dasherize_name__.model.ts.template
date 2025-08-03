@@ -1,10 +1,9 @@
-export interface <%= classify(name) %>Dto extends any {
+export interface <%= classify(name) %>Dto {
   Id: string,
   Name: string,
 }
 
 export interface <%= classify(name) %>DetailDto extends <%= classify(name) %>Dto {
-  Id: number,
   details: string
 }
 

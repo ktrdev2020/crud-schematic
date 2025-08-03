@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { <%= classify(name) %>ListComponent } from './component/<%= dasherize(name) %>-list/<%= dasherize(name) %>-list.component';
-import { <%= classify(name) %>DetailComponent } from './component/<%= dasherize(name) %>-detail/<%= dasherize(name) %>-detail.component';
+import { <%= classify(name) %>DetailsComponent } from './component/<%= dasherize(name) %>-details/<%= dasherize(name) %>-details.component';
 import { <%= classify(name) %>EditComponent } from './component/<%= dasherize(name) %>-edit/<%= dasherize(name) %>-edit.component';
-import { <%= classify(name) %>AddComponent } from './component/<%= dasherize(name) %>-edit/<%= dasherize(name) %>-edit.component';
+import { <%= classify(name) %>AddComponent } from './component/<%= dasherize(name) %>-add/<%= dasherize(name) %>-add.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: '<%= dasherize(name) %>/:id',
-    component: <%= classify(name) %>DetailComponent
+    component: <%= classify(name) %>DetailsComponent
   },
   {
     path: '<%= dasherize(name) %>/:id/edit',

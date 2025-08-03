@@ -16,8 +16,8 @@ import { <%= classify(name) %>ApiService } from '../../services/<%= dasherize(na
 export class <%= classify(name) %>DetailsComponent implements OnInit {
   <%= classify(name) %>Id!: number;
   loading$!: Observable<boolean>;
-  <%= classify(name) %>List$?: Observable<<%= classify(name) %>DetailDto[]>;
-  items? = any;
+  <%= classify(name) %>List$?: Observable<<%= classify(name) %>DetailDto>;
+  items? : any;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,7 +42,7 @@ export class <%= classify(name) %>DetailsComponent implements OnInit {
     this.store.dispatch(<%= classify(name) %>Actions.load<%= classify(name) %>ById({ id: this.<%= classify(name) %>Id }));
 
     // ✅ ดึงรายการจุดควบคุมจาก API
-    this.<%= classify(name) %>Details$ = this.store.select(<%= classify(name) %>Selectors.select<%= classify(name) %>ById({ id: this.<%= classify(name) %>Id }));
+    this.<%= classify(name) %>Details$ = this.store.select(<%= classify(name) %>Selectors.select<%= classify(name) %>ById(this.<%= classify(name) %>Id.toString()));
 
     // ✅ สถานะ Loading จาก store
     this.loading$ = this.store.select(<%= classify(name) %>Selectors.select<%= classify(name) %>Loading);

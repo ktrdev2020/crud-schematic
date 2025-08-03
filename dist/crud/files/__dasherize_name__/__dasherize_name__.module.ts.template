@@ -4,17 +4,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { IonicModule } from '@ionic/angular';
-import { LoadingComponent } from '../shared/component/loading/loading.component';
+import { LoadingComponent } from '../../shared/component/loading/loading.component';
 
 import { <%= classify(name) %>RoutingModule } from './<%= dasherize(name) %>-routing.module';
 
 // 🔌 Component
 import { <%= classify(name) %>ListComponent } from './component/<%= dasherize(name) %>-list/<%= dasherize(name) %>-list.component';
-import { <%= classify(name) %>DetailComponent } from './component/<%= dasherize(name) %>-detail/<%= dasherize(name) %>-detail.component';
+import { <%= classify(name) %>DetailsComponent } from './component/<%= dasherize(name) %>-details/<%= dasherize(name) %>-details.component';
 import { <%= classify(name) %>EditComponent } from './component/<%= dasherize(name) %>-edit/<%= dasherize(name) %>-edit.component';
-import { <%= classify(name) %>AddComponent } from './component/<%= dasherize(name) %>-edit/<%= dasherize(name) %>-edit.component';
+import { <%= classify(name) %>AddComponent } from './component/<%= dasherize(name) %>-add/<%= dasherize(name) %>-add.component';
 
-import { <%= classify(name) %>Reducer } from './store/reducers/<%= dasherize(name) %>.reducer';
+import { <%= classify(name) %>Reducer } from './store/reducers/<%= dasherize(name) %>.reducers';
 import { <%= classify(name) %>Effects } from './store/effects/<%= dasherize(name) %>.effects';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { <%= classify(name) %>Effects } from './store/effects/<%= dasherize(name
   declarations: [
     <%= classify(name) %>ListComponent,
     <%= classify(name) %>AddComponent,
-    <%= classify(name) %>DetailComponent,
+    <%= classify(name) %>DetailsComponent,
     <%= classify(name) %>EditComponent,
     LoadingComponent,
   ],

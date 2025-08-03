@@ -1,12 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import * as <%= classify(name) %>Actions from '../actions/<%= dasherize(name) %>.actions';
+import * as <%= classify(name) %>Actions from '../state/<%= dasherize(name) %>.state';
 import {
   adapter,
   initialState,
   <%= classify(name) %>State
 } from '../state/<%= dasherize(name) %>.state';
 
-export const <%= dasherize(name) %>Reducer = createReducer(
+export const <%= classify(name) %>Reducer = createReducer(
   initialState,
 
   // 🔁 Load All
@@ -61,7 +61,7 @@ export const <%= dasherize(name) %>Reducer = createReducer(
 
   // ✏️ Update
   on(<%= classify(name) %>Actions.update<%= classify(name) %>Success, (state, { data }) =>
-    adapter.updateOne({ id: data.id, changes: data }, state)
+    adapter.updateOne({ id: data.Id, changes: data }, state)
   ),
 
   // ❌ Delete
