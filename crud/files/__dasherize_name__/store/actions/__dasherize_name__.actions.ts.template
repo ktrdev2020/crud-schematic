@@ -1,72 +1,72 @@
 import { createAction, props } from '@ngrx/store';
-import { {{ '{{' }} classify name {{ '}}' }}, Create{{ '{{' }} classify name {{ '}}' }}Dto, Update{{ '{{' }} classify name {{ '}}' }}Dto } from '../../models/{{ '{{' }} dasherize name {{ '}}' }}.model';
+import { {{ classify_name }}, Create{{ classify_name }}Dto, Update{{ classify_name }}Dto } from '../../models/{{ dasherize_name }}.model';
 
 // 🔁 Load All
-export const load{{ '{{' }} classify name {{ '}}' }}s = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Load All',
+export const load{{ classify_name }}s = createAction(
+  '[{{ classify_name }}] Load All',
   props<{ limit?: number; offset?: number }>()
 );
-export const load{{ '{{' }} classify name {{ '}}' }}sSuccess = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Load Success',
-  props<{ data: {{ '{{' }} classify name {{ '}}' }}[]; total: number }>()
+export const load{{ classify_name }}sSuccess = createAction(
+  '[{{ classify_name }}] Load Success',
+  props<{ data: {{ classify_name }}[]; total: number }>()
 );
-export const load{{ '{{' }} classify name {{ '}}' }}sFailure = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Load Failure',
+export const load{{ classify_name }}sFailure = createAction(
+  '[{{ classify_name }}] Load Failure',
   props<{ error: string }>()
 );
 
 // ✅ Load By ID (ใช้ในหน้า details)
-export const load{{ '{{' }} classify name {{ '}}' }}ById = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Load By ID',
+export const load{{ classify_name }}ById = createAction(
+  '[{{ classify_name }}] Load By ID',
   props<{ id: number }>()
 );
-export const load{{ '{{' }} classify name {{ '}}' }}ByIdSuccess = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Load By ID Success',
-  props<{ data: {{ '{{' }} classify name {{ '}}' }} }>()
+export const load{{ classify_name }}ByIdSuccess = createAction(
+  '[{{ classify_name }}] Load By ID Success',
+  props<{ data: {{ classify_name }} }>()
 );
-export const load{{ '{{' }} classify name {{ '}}' }}ByIdFailure = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Load By ID Failure',
+export const load{{ classify_name }}ByIdFailure = createAction(
+  '[{{ classify_name }}] Load By ID Failure',
   props<{ error: string }>()
 );
 
 // ➕ Add
-export const add{{ '{{' }} classify name {{ '}}' }} = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Add',
-  props<{ data: Create{{ '{{' }} classify name {{ '}}' }}Dto }>()
+export const add{{ classify_name }} = createAction(
+  '[{{ classify_name }}] Add',
+  props<{ data: Create{{ classify_name }}Dto }>()
 );
-export const add{{ '{{' }} classify name {{ '}}' }}Success = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Add Success',
-  props<{ data: {{ '{{' }} classify name {{ '}}' }} }>()
+export const add{{ classify_name }}Success = createAction(
+  '[{{ classify_name }}] Add Success',
+  props<{ data: {{ classify_name }} }>()
 );
-export const add{{ '{{' }} classify name {{ '}}' }}Failure = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Add Failure',
+export const add{{ classify_name }}Failure = createAction(
+  '[{{ classify_name }}] Add Failure',
   props<{ error: string }>()
 );
 
 // ✏️ Update
-export const update{{ '{{' }} classify name {{ '}}' }} = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Update',
-  props<{ id: number; data: Update{{ '{{' }} classify name {{ '}}' }}Dto }>()
+export const update{{ classify_name }} = createAction(
+  '[{{ classify_name }}] Update',
+  props<{ id: number; data: Update{{ classify_name }}Dto }>()
 );
-export const update{{ '{{' }} classify name {{ '}}' }}Success = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Update Success',
-  props<{ data: {{ '{{' }} classify name {{ '}}' }} }>()
+export const update{{ classify_name }}Success = createAction(
+  '[{{ classify_name }}] Update Success',
+  props<{ data: {{ classify_name }} }>()
 );
-export const update{{ '{{' }} classify name {{ '}}' }}Failure = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Update Failure',
+export const update{{ classify_name }}Failure = createAction(
+  '[{{ classify_name }}] Update Failure',
   props<{ error: string }>()
 );
 
 // ❌ Delete
-export const delete{{ '{{' }} classify name {{ '}}' }} = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Delete',
+export const delete{{ classify_name }} = createAction(
+  '[{{ classify_name }}] Delete',
   props<{ id: string }>()
 );
-export const delete{{ '{{' }} classify name {{ '}}' }}Success = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Delete Success',
+export const delete{{ classify_name }}Success = createAction(
+  '[{{ classify_name }}] Delete Success',
   props<{ id: string }>()
 );
-export const delete{{ '{{' }} classify name {{ '}}' }}Failure = createAction(
-  '[{{ '{{' }} classify name {{ '}}' }}] Delete Failure',
+export const delete{{ classify_name }}Failure = createAction(
+  '[{{ classify_name }}] Delete Failure',
   props<{ error: string }>()
 );

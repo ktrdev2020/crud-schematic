@@ -2,28 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable, tap } from 'rxjs';
-import { {{ '{{' }} classify name {{ '}}' }}Dto, {{ '{{' }} classify name {{ '}}' }}DetailDto } from '../../models/{{ '{{' }} dasherize name {{ '}}' }}.model';
-import * as {{ '{{' }} classify name {{ '}}' }}Actions from '../../store/actions/{{ '{{' }} dasherize name {{ '}}' }}.actions';
-import * as {{ '{{' }} classify name {{ '}}' }}Selectors from '../../store/selectors/{{ '{{' }} dasherize name {{ '}}' }}.selectors';
-import { {{ '{{' }} classify name {{ '}}' }}ApiService } from '../../services/{{ '{{' }} dasherize name {{ '}}' }}-api.service';
+import { {{ classify_name }}Dto, {{ classify_name }}DetailDto } from '../../models/{{ dasherize_name }}.model';
+import * as {{ classify_name }}Actions from '../../store/actions/{{ dasherize_name }}.actions';
+import * as {{ classify_name }}Selectors from '../../store/selectors/{{ dasherize_name }}.selectors';
+import { {{ classify_name }}ApiService } from '../../services/{{ dasherize_name }}-api.service';
 
 @Component({
-  selector: 'app-{{ '{{' }} dasherize name {{ '}}' }}-details',
-  templateUrl: './{{ '{{' }} dasherize name {{ '}}' }}-details.component.html',
-  styleUrls: ['./{{ '{{' }} dasherize name {{ '}}' }}-details.component.scss'],
+  selector: 'app-{{ dasherize_name }}-details',
+  templateUrl: './{{ dasherize_name }}-details.component.html',
+  styleUrls: ['./{{ dasherize_name }}-details.component.scss'],
   standalone: false,
 })
-export class {{ '{{' }} classify name {{ '}}' }}DetailsComponent implements OnInit {
-  {{ '{{' }} classify name {{ '}}' }}Id!: number;
+export class {{ classify_name }}DetailsComponent implements OnInit {
+  {{ classify_name }}Id!: number;
   loading$!: Observable<boolean>;
-  {{ '{{' }} classify name {{ '}}' }}List$?: Observable<{{ '{{' }} classify name {{ '}}' }}DetailDto[]>;
+  {{ classify_name }}List$?: Observable<{{ classify_name }}DetailDto[]>;
   items? = any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private store: Store,
-    private apiService: {{ '{{' }} classify name {{ '}}' }}ApiService
+    private apiService: {{ classify_name }}ApiService
   ) {}
 
   ngOnInit(): void {
@@ -32,24 +32,24 @@ export class {{ '{{' }} classify name {{ '}}' }}DetailsComponent implements OnIn
 
     if (!this.items?.id) {
       // ถ้าไม่มี device ส่งมา กลับไปหน้าหลัก
-      this.router.navigateByUrl('../{{ '{{' }} classify name {{ '}}' }}');
+      this.router.navigateByUrl('../{{ classify_name }}');
       return;
     }
 
-    this.{{ '{{' }} classify name {{ '}}' }}Id = Number(this.items.id);
+    this.{{ classify_name }}Id = Number(this.items.id);
 
     // dispatch store
-    this.store.dispatch({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}ById({ id: this.{{ '{{' }} classify name {{ '}}' }}Id }));
+    this.store.dispatch({{ classify_name }}Actions.load{{ classify_name }}ById({ id: this.{{ classify_name }}Id }));
 
     // ✅ ดึงรายการจุดควบคุมจาก API
-    this.{{ '{{' }} classify name {{ '}}' }}Details$ = this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}ById({ id: this.{{ '{{' }} classify name {{ '}}' }}Id }));
+    this.{{ classify_name }}Details$ = this.store.select({{ classify_name }}Selectors.select{{ classify_name }}ById({ id: this.{{ classify_name }}Id }));
 
     // ✅ สถานะ Loading จาก store
-    this.loading$ = this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}Loading);
+    this.loading$ = this.store.select({{ classify_name }}Selectors.select{{ classify_name }}Loading);
   }
 
   doRefresh(event: any) {
-    this.store.dispatch({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}ById({ id: this.{{ '{{' }} classify name {{ '}}' }}Id }));
+    this.store.dispatch({{ classify_name }}Actions.load{{ classify_name }}ById({ id: this.{{ classify_name }}Id }));
     event.target.complete();
   }
 }

@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Create{{ '{{' }} classify name {{ '}}' }}Dto } from '../../models/{{ '{{' }} dasherize name {{ '}}' }}.model';
-import * as {{ '{{' }} classify name {{ '}}' }}Actions from '../../store/actions/{{ '{{' }} dasherize name {{ '}}' }}.actions';
-import { {{ '{{' }} classify name {{ '}}' }}ApiService } from '../../services/{{ '{{' }} dasherize name {{ '}}' }}-api.service';
+import { Create{{ classify_name }}Dto } from '../../models/{{ dasherize_name }}.model';
+import * as {{ classify_name }}Actions from '../../store/actions/{{ dasherize_name }}.actions';
+import { {{ classify_name }}ApiService } from '../../services/{{ dasherize_name }}-api.service';
 
 @Component({
-  selector: 'app-{{ '{{' }} dasherize name {{ '}}' }}-add',
-  templateUrl: './{{ '{{' }} dasherize name {{ '}}' }}-add.component.html',
-  styleUrls: ['./{{ '{{' }} dasherize name {{ '}}' }}-add.component.scss'],
+  selector: 'app-{{ dasherize_name }}-add',
+  templateUrl: './{{ dasherize_name }}-add.component.html',
+  styleUrls: ['./{{ dasherize_name }}-add.component.scss'],
   standalone: false,
 })
-export class {{ '{{' }} classify name {{ '}}' }}AddComponent implements OnInit {
+export class {{ classify_name }}AddComponent implements OnInit {
   form!: FormGroup;
  
   constructor(
     private fb: FormBuilder,
     private store: Store,
-    private apiService: {{ '{{' }} classify name {{ '}}' }}ApiService
+    private apiService: {{ classify_name }}ApiService
   ) {
-    console.log("📄 {{ '{{' }} classify name {{ '}}' }}");
+    console.log("📄 {{ classify_name }}");
   }
 
   ngOnInit(): void {
@@ -35,10 +35,10 @@ export class {{ '{{' }} classify name {{ '}}' }}AddComponent implements OnInit {
       return;
     }
 
-    const dto: Create{{ '{{' }} classify name {{ '}}' }}Dto = this.form.value;
+    const dto: Create{{ classify_name }}Dto = this.form.value;
     console.log("🚀 DTO ที่จะส่ง:", dto);
 
-    this.store.dispatch({{ '{{' }} classify name {{ '}}' }}Actions.add{{ '{{' }} classify name {{ '}}' }}({ data: dto }));
+    this.store.dispatch({{ classify_name }}Actions.add{{ classify_name }}({ data: dto }));
   }
 
 }

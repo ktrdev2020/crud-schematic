@@ -6,16 +6,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { IonicModule } from '@ionic/angular';
 import { LoadingComponent } from '../shared/component/loading/loading.component';
 
-import { {{ '{{' }} classify name {{ '}}' }}RoutingModule } from './{{ '{{' }} dasherize name {{ '}}' }}-routing.module';
+import { {{ classify_name }}RoutingModule } from './{{ dasherize_name }}-routing.module';
 
 // 🔌 Component
-import { {{ '{{' }} classify name {{ '}}' }}ListComponent } from './component/{{ '{{' }} dasherize name {{ '}}' }}-list/{{ '{{' }} dasherize name {{ '}}' }}-list.component';
-import { {{ '{{' }} classify name {{ '}}' }}DetailComponent } from './component/{{ '{{' }} dasherize name {{ '}}' }}-detail/{{ '{{' }} dasherize name {{ '}}' }}-detail.component';
-import { {{ '{{' }} classify name {{ '}}' }}EditComponent } from './component/{{ '{{' }} dasherize name {{ '}}' }}-edit/{{ '{{' }} dasherize name {{ '}}' }}-edit.component';
-import { {{ '{{' }} classify name {{ '}}' }}AddComponent } from './component/{{ '{{' }} dasherize name {{ '}}' }}-edit/{{ '{{' }} dasherize name {{ '}}' }}-edit.component';
+import { {{ classify_name }}ListComponent } from './component/{{ dasherize_name }}-list/{{ dasherize_name }}-list.component';
+import { {{ classify_name }}DetailComponent } from './component/{{ dasherize_name }}-detail/{{ dasherize_name }}-detail.component';
+import { {{ classify_name }}EditComponent } from './component/{{ dasherize_name }}-edit/{{ dasherize_name }}-edit.component';
+import { {{ classify_name }}AddComponent } from './component/{{ dasherize_name }}-edit/{{ dasherize_name }}-edit.component';
 
-import { {{ '{{' }} classify name {{ '}}' }}Reducer } from './store/reducers/{{ '{{' }} dasherize name {{ '}}' }}.reducer';
-import { {{ '{{' }} classify name {{ '}}' }}Effects } from './store/effects/{{ '{{' }} dasherize name {{ '}}' }}.effects';
+import { {{ classify_name }}Reducer } from './store/reducers/{{ dasherize_name }}.reducer';
+import { {{ classify_name }}Effects } from './store/effects/{{ dasherize_name }}.effects';
 
 @NgModule({
   imports: [
@@ -23,18 +23,18 @@ import { {{ '{{' }} classify name {{ '}}' }}Effects } from './store/effects/{{ '
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    {{ '{{' }} classify name {{ '}}' }}RoutingModule,
+    {{ classify_name }}RoutingModule,
 
     // ✅ Register Store & Effects
-    StoreModule.forFeature('{{ '{{' }} dasherize name {{ '}}' }}', {{ '{{' }} classify name {{ '}}' }}Reducer),
-    EffectsModule.forFeature([{{ '{{' }} classify name {{ '}}' }}Effects]),
+    StoreModule.forFeature('{{ dasherize_name }}', {{ classify_name }}Reducer),
+    EffectsModule.forFeature([{{ classify_name }}Effects]),
   ],
   declarations: [
-    {{ '{{' }} classify name {{ '}}' }}ListComponent,
-    {{ '{{' }} classify name {{ '}}' }}AddComponent,
-    {{ '{{' }} classify name {{ '}}' }}DetailComponent,
-    {{ '{{' }} classify name {{ '}}' }}EditComponent,
+    {{ classify_name }}ListComponent,
+    {{ classify_name }}AddComponent,
+    {{ classify_name }}DetailComponent,
+    {{ classify_name }}EditComponent,
     LoadingComponent,
   ],
 })
-export class {{ '{{' }} classify name {{ '}}' }}Module {}
+export class {{ classify_name }}Module {}

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="../{{ '{{' }} classify name {{ '}}' }}" routerDirection="root"></ion-back-button>
+      <ion-back-button defaultHref="../{{ classify_name }}" routerDirection="root"></ion-back-button>
     </ion-buttons>
     <ion-title>แก้ไขข้อมูลอุปกรณ์</ion-title>
     <ion-buttons slot="end">

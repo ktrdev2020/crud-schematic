@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, firstValueFrom } from 'rxjs';
-import { {{ '{{' }} classify name {{ '}}' }}Dto } from '../../models/{{ '{{' }} dasherize name {{ '}}' }}.model';
-import * as {{ '{{' }} classify name {{ '}}' }}Actions from '../../store/actions/{{ '{{' }} dasherize name {{ '}}' }}.actions';
-import * as {{ '{{' }} classify name {{ '}}' }}Selectors from '../../store/selectors/{{ '{{' }} dasherize name {{ '}}' }}.selectors';
+import { {{ classify_name }}Dto } from '../../models/{{ dasherize_name }}.model';
+import * as {{ classify_name }}Actions from '../../store/actions/{{ dasherize_name }}.actions';
+import * as {{ classify_name }}Selectors from '../../store/selectors/{{ dasherize_name }}.selectors';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-{{ '{{' }} dasherize name {{ '}}' }}-list',
-  templateUrl: './{{ '{{' }} dasherize name {{ '}}' }}-list.component.html',
-  styleUrls: ['./{{ '{{' }} dasherize name {{ '}}' }}-list.component.scss'],
+  selector: 'app-{{ dasherize_name }}-list',
+  templateUrl: './{{ dasherize_name }}-list.component.html',
+  styleUrls: ['./{{ dasherize_name }}-list.component.scss'],
   standalone: false,
 })
-export class {{ '{{' }} classify name {{ '}}' }}ListComponent implements OnInit {
-  items$!: Observable<{{ '{{' }} classify name {{ '}}' }}Dto[]>;
+export class {{ classify_name }}ListComponent implements OnInit {
+  items$!: Observable<{{ classify_name }}Dto[]>;
   loading$!: Observable<boolean>;
   error$!: Observable<string | null>;
   currentPage$!: Observable<number>;
@@ -27,27 +27,27 @@ export class {{ '{{' }} classify name {{ '}}' }}ListComponent implements OnInit 
   }
 
   selectState() {
-    this.items$ = this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.selectAll{{ '{{' }} classify name {{ '}}' }}s);
-    this.loading$ = this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}Loading);
-    this.error$ = this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}Error);
-    this.currentPage$ = this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}CurrentPage);
-    this.totalPages$ = this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}TotalPages);
+    this.items$ = this.store.select({{ classify_name }}Selectors.selectAll{{ classify_name }}s);
+    this.loading$ = this.store.select({{ classify_name }}Selectors.select{{ classify_name }}Loading);
+    this.error$ = this.store.select({{ classify_name }}Selectors.select{{ classify_name }}Error);
+    this.currentPage$ = this.store.select({{ classify_name }}Selectors.select{{ classify_name }}CurrentPage);
+    this.totalPages$ = this.store.select({{ classify_name }}Selectors.select{{ classify_name }}TotalPages);
   }
 
   async nextPage() {
-    const limit = await firstValueFrom(this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}Limit));
-    const offset = await firstValueFrom(this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}Offset));
-    this.store.dispatch({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}s({
+    const limit = await firstValueFrom(this.store.select({{ classify_name }}Selectors.select{{ classify_name }}Limit));
+    const offset = await firstValueFrom(this.store.select({{ classify_name }}Selectors.select{{ classify_name }}Offset));
+    this.store.dispatch({{ classify_name }}Actions.load{{ classify_name }}s({
       limit,
       offset: offset + limit
     }));
   }
 
   async prevPage() {
-    const limit = await firstValueFrom(this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}Limit));
-    const offset = await firstValueFrom(this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}Offset));
+    const limit = await firstValueFrom(this.store.select({{ classify_name }}Selectors.select{{ classify_name }}Limit));
+    const offset = await firstValueFrom(this.store.select({{ classify_name }}Selectors.select{{ classify_name }}Offset));
     const newOffset = offset - limit >= 0 ? offset - limit : 0;
-    this.store.dispatch({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}s({
+    this.store.dispatch({{ classify_name }}Actions.load{{ classify_name }}s({
       limit,
       offset: newOffset
     }));
@@ -63,14 +63,14 @@ export class {{ '{{' }} classify name {{ '}}' }}ListComponent implements OnInit 
   }
 
   async refresh(event: any) {
-    const limit = await firstValueFrom(this.store.select({{ '{{' }} classify name {{ '}}' }}Selectors.select{{ '{{' }} classify name {{ '}}' }}Limit));
-    this.store.dispatch({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}s({ limit, offset: 0 }));
+    const limit = await firstValueFrom(this.store.select({{ classify_name }}Selectors.select{{ classify_name }}Limit));
+    this.store.dispatch({{ classify_name }}Actions.load{{ classify_name }}s({ limit, offset: 0 }));
     setTimeout(() => {
       event.target.complete();
     }, 500);
   }
 
   private loadDataFromStore() {
-    this.store.dispatch({{ '{{' }} classify name {{ '}}' }}Actions.load{{ '{{' }} classify name {{ '}}' }}s({}));
+    this.store.dispatch({{ classify_name }}Actions.load{{ classify_name }}s({}));
   }
 }

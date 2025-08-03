@@ -1,74 +1,74 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { {{ '{{' }} classify name {{ '}}' }}State, selectAll } from '../reducers/{{ '{{' }} dasherize name {{ '}}' }}.reducer';
+import { {{ classify_name }}State, selectAll } from '../reducers/{{ dasherize_name }}.reducer';
 
-export const select{{ '{{' }} classify name {{ '}}' }}State = createFeatureSelector<{{ '{{' }} classify name {{ '}}' }}State>('{{ '{{' }} classify name {{ '}}' }}');
+export const select{{ classify_name }}State = createFeatureSelector<{{ classify_name }}State>('{{ classify_name }}');
 
 // 🌟 Entity Selectors
-export const selectAll{{ '{{' }} classify name {{ '}}' }}s = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
+export const selectAll{{ classify_name }}s = createSelector(
+  select{{ classify_name }}State,
   selectAll
 );
 
-export const select{{ '{{' }} classify name {{ '}}' }}Loading = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
+export const select{{ classify_name }}Loading = createSelector(
+  select{{ classify_name }}State,
   state => state.loading
 );
 
-export const select{{ '{{' }} classify name {{ '}}' }}Error = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
+export const select{{ classify_name }}Error = createSelector(
+  select{{ classify_name }}State,
   state => state.error
 );
 
-export const select{{ '{{' }} classify name {{ '}}' }}Total = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
+export const select{{ classify_name }}Total = createSelector(
+  select{{ classify_name }}State,
   state => state.total
 );
 
 // ✅ Offset / Limit / Page
-export const select{{ '{{' }} classify name {{ '}}' }}Offset = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
+export const select{{ classify_name }}Offset = createSelector(
+  select{{ classify_name }}State,
   state => state.offset
 );
 
-export const select{{ '{{' }} classify name {{ '}}' }}Limit = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
+export const select{{ classify_name }}Limit = createSelector(
+  select{{ classify_name }}State,
   state => state.limit
 );
 
-export const select{{ '{{' }} classify name {{ '}}' }}CurrentPage = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
+export const select{{ classify_name }}CurrentPage = createSelector(
+  select{{ classify_name }}State,
   state => state.currentPage
 );
 
 // ✅ Total Pages
-export const select{{ '{{' }} classify name {{ '}}' }}TotalPages = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}Total,
-  select{{ '{{' }} classify name {{ '}}' }}Limit,
+export const select{{ classify_name }}TotalPages = createSelector(
+  select{{ classify_name }}Total,
+  select{{ classify_name }}Limit,
   (total, limit) => Math.ceil(total / limit)
 );
 
 // ✅ Select by ID (dynamic)
-export const select{{ '{{' }} classify name {{ '}}' }}ById = (id: string) =>
-  createSelector(select{{ '{{' }} classify name {{ '}}' }}State, state => state.entities[id]);
+export const select{{ classify_name }}ById = (id: string) =>
+  createSelector(select{{ classify_name }}State, state => state.entities[id]);
 
 // ✅ Filtered (Predicate)
-export const select{{ '{{' }} classify name {{ '}}' }}Where = (predicate: (g: any) => boolean) =>
-  createSelector(selectAll{{ '{{' }} classify name {{ '}}' }}s, all => all.filter(predicate));
+export const select{{ classify_name }}Where = (predicate: (g: any) => boolean) =>
+  createSelector(selectAll{{ classify_name }}s, all => all.filter(predicate));
 
 // ✅ Slice / Paged (for optional manual slicing)
-export const select{{ '{{' }} classify name {{ '}}' }}Paged = (limit: number, offset: number) =>
-  createSelector(selectAll{{ '{{' }} classify name {{ '}}' }}s, all => all.slice(offset, offset + limit));
+export const select{{ classify_name }}Paged = (limit: number, offset: number) =>
+  createSelector(selectAll{{ classify_name }}s, all => all.slice(offset, offset + limit));
 
 
 // 🆕 ✅ Select current selectedId
-export const select{{ '{{' }} classify name {{ '}}' }}SelectedId = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
+export const select{{ classify_name }}SelectedId = createSelector(
+  select{{ classify_name }}State,
   state => state.selectedId
 );
 
 // 🆕 ✅ Select current selected item (for details view)
-export const selectSelected{{ '{{' }} classify name {{ '}}' }} = createSelector(
-  select{{ '{{' }} classify name {{ '}}' }}State,
-  select{{ '{{' }} classify name {{ '}}' }}SelectedId,
+export const selectSelected{{ classify_name }} = createSelector(
+  select{{ classify_name }}State,
+  select{{ classify_name }}SelectedId,
   (state, selectedId) => selectedId ? state.entities[selectedId] ?? null : null
 );
