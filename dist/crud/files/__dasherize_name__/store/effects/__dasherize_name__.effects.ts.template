@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import * as {{ classify_name }}Actions from '../actions/{{ dasherize_name }}.actions';
-import { {{ classify_name }}ApiService } from '../../services/{{ dasherize_name }}-api.service';
+import * as <%= classify(name) %>Actions from '../actions/<%= dasherize(name) %>.actions';
+import { <%= classify(name) %>ApiService } from '../../services/<%= dasherize(name) %>-api.service';
 
 @Injectable()
-export class {{ classify_name }}Effects {
-  constructor(private actions$: Actions, private service: {{ classify_name }}ApiService) {}
+export class <%= classify(name) %>Effects {
+  constructor(private actions$: Actions, private service: <%= classify(name) %>ApiService) {}
 
   load$ = createEffect(() =>
     this.actions$.pipe(
-      ofType({{ classify_name }}Actions.load{{ classify_name }}s),
+      ofType(<%= classify(name) %>Actions.load<%= classify(name) %>s),
       mergeMap(action =>
         this.service.getAll(action.limit, action.offset).pipe(
           map(res =>
-            {{ classify_name }}Actions.load{{ classify_name }}sSuccess({ data: res.data, total: res.total })
+            <%= classify(name) %>Actions.load<%= classify(name) %>sSuccess({ data: res.data, total: res.total })
           ),
           catchError(err =>
-            of({{ classify_name }}Actions.load{{ classify_name }}sFailure({ error: err.message }))
+            of(<%= classify(name) %>Actions.load<%= classify(name) %>sFailure({ error: err.message }))
           )
         )
       )
@@ -26,12 +26,12 @@ export class {{ classify_name }}Effects {
 
   loadById$ = createEffect(() =>
     this.actions$.pipe(
-      ofType({{ classify_name }}Actions.load{{ classify_name }}ById),
+      ofType(<%= classify(name) %>Actions.load<%= classify(name) %>ById),
       mergeMap(action =>
         this.service.getById(action.id).pipe(
-          map(data => {{ classify_name }}Actions.load{{ classify_name }}ByIdSuccess({ data })),
+          map(data => <%= classify(name) %>Actions.load<%= classify(name) %>ByIdSuccess({ data })),
           catchError(err =>
-            of({{ classify_name }}Actions.load{{ classify_name }}ByIdFailure({ error: err.message }))
+            of(<%= classify(name) %>Actions.load<%= classify(name) %>ByIdFailure({ error: err.message }))
           )
         )
       )
@@ -40,12 +40,12 @@ export class {{ classify_name }}Effects {
 
   add$ = createEffect(() =>
     this.actions$.pipe(
-      ofType({{ classify_name }}Actions.add{{ classify_name }}),
+      ofType(<%= classify(name) %>Actions.add<%= classify(name) %>),
       mergeMap(action =>
         this.service.create(action.data).pipe(
-          map(data => {{ classify_name }}Actions.add{{ classify_name }}Success({ data })),
+          map(data => <%= classify(name) %>Actions.add<%= classify(name) %>Success({ data })),
           catchError(err =>
-            of({{ classify_name }}Actions.add{{ classify_name }}Failure({ error: err.message }))
+            of(<%= classify(name) %>Actions.add<%= classify(name) %>Failure({ error: err.message }))
         )
       )
     )
@@ -53,13 +53,13 @@ export class {{ classify_name }}Effects {
 
   update$ = createEffect(() =>
     this.actions$.pipe(
-      ofType({{ classify_name }}Actions.update{{ classify_name }}),
+      ofType(<%= classify(name) %>Actions.update<%= classify(name) %>),
       mergeMap(action =>
         this.service.update(action.id, action.data).pipe(
           mergeMap(() => this.service.getById(action.id)),
-          map(data => {{ classify_name }}Actions.update{{ classify_name }}Success({ data })),
+          map(data => <%= classify(name) %>Actions.update<%= classify(name) %>Success({ data })),
           catchError(err =>
-            of({{ classify_name }}Actions.update{{ classify_name }}Failure({ error: err.message }))
+            of(<%= classify(name) %>Actions.update<%= classify(name) %>Failure({ error: err.message }))
         )
       )
     )
@@ -67,12 +67,12 @@ export class {{ classify_name }}Effects {
 
   delete$ = createEffect(() =>
     this.actions$.pipe(
-      ofType({{ classify_name }}Actions.delete{{ classify_name }}),
+      ofType(<%= classify(name) %>Actions.delete<%= classify(name) %>),
       mergeMap(action =>
         this.service.delete(action.id).pipe(
-          map(() => {{ classify_name }}Actions.delete{{ classify_name }}Success({ id: action.id })),
+          map(() => <%= classify(name) %>Actions.delete<%= classify(name) %>Success({ id: action.id })),
           catchError(err =>
-            of({{ classify_name }}Actions.delete{{ classify_name }}Failure({ error: err.message }))
+            of(<%= classify(name) %>Actions.delete<%= classify(name) %>Failure({ error: err.message }))
         )
       )
     )

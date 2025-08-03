@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { {{ classify_name }}Dto, Create{{ classify_name }}Dto, Update{{ classify_name }}Dto } from '../models/{{ dasherize_name }}.model';
+import { <%= classify(name) %>Dto, Create<%= classify(name) %>Dto, Update<%= classify(name) %>Dto } from '../models/<%= dasherize(name) %>.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
-export class {{ classify_name }}ApiService {
-  private apiUrl = `${environment.apiUrl}/{{ classify_name }}`;
+export class <%= classify(name) %>ApiService {
+  private apiUrl = `${environment.apiUrl}/<%= classify(name) %>`;
 
   constructor(private http: HttpClient) {}
 
@@ -14,21 +14,21 @@ export class {{ classify_name }}ApiService {
     return this.apiUrl;
   }
 
-  getAll(limit = 10, offset = 0): Observable<{ total: number; data: {{ classify_name }}Dto[] }> {
-    return this.http.get<{ total: number; data: {{ classify_name }}Dto[] }>(
+  getAll(limit = 10, offset = 0): Observable<{ total: number; data: <%= classify(name) %>Dto[] }> {
+    return this.http.get<{ total: number; data: <%= classify(name) %>Dto[] }>(
       `${this.apiUrlEndpoint}?limit=${limit}&offset=${offset}`
     );
   }
 
-  getById(id: number): Observable<{{ classify_name }}Dto> {
-    return this.http.get<{{ classify_name }}Dto>(`${this.apiUrlEndpoint}/${id}`);
+  getById(id: number): Observable<<%= classify(name) %>Dto> {
+    return this.http.get<<%= classify(name) %>Dto>(`${this.apiUrlEndpoint}/${id}`);
   }
 
-  create(data: Create{{ classify_name }}Dto): Observable<any> {
+  create(data: Create<%= classify(name) %>Dto): Observable<any> {
     return this.http.post<any>(this.apiUrlEndpoint, data);
   }
 
-  update(id: number, data: Update{{ classify_name }}Dto): Observable<any> {
+  update(id: number, data: Update<%= classify(name) %>Dto): Observable<any> {
     return this.http.put(`${this.apiUrlEndpoint}/${id}`, data);
   }
 

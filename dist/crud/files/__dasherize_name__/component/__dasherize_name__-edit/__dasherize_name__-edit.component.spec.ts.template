@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { {{ classify_name }}EditComponent } from './{{ dasherize_name }}-edit.component';
+import { <%= classify(name) %>EditComponent } from './<%= dasherize(name) %>-edit.component';
 
-describe('{{ classify_name }}EditComponent', () => {
-  let component: {{ classify_name }}EditComponent;
-  let fixture: ComponentFixture<{{ classify_name }}EditComponent>;
+describe('<%= classify(name) %>EditComponent', () => {
+  let component: <%= classify(name) %>EditComponent;
+  let fixture: ComponentFixture<<%= classify(name) %>EditComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ {{ classify_name }}EditComponent ],
+      declarations: [ <%= classify(name) %>EditComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent({{ classify_name }}EditComponent);
+    fixture = TestBed.createComponent(<%= classify(name) %>EditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

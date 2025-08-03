@@ -1,18 +1,18 @@
-export interface {{ classify_name }}Dto extends any {
+export interface <%= classify(name) %>Dto extends any {
   Id: string,
   Name: string,
 }
 
-export interface {{ classify_name }}DetailDto extends {{ classify_name }}Dto {
+export interface <%= classify(name) %>DetailDto extends <%= classify(name) %>Dto {
   Id: number,
   details: string
 }
 
-export interface Create{{ classify_name }}Dto extends {{ classify_name }}Dto {
+export interface Create<%= classify(name) %>Dto extends <%= classify(name) %>Dto {
   createDate: string
 }
 
-export interface Update{{ classify_name }}Dto extends {{ classify_name }}Dto {
+export interface Update<%= classify(name) %>Dto extends <%= classify(name) %>Dto {
   id: string,
   updateDate: string;
 }

@@ -1,16 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
-import * as {{ classify_name }}Actions from '../actions/{{ dasherize_name }}.actions';
+import * as <%= classify(name) %>Actions from '../actions/<%= dasherize(name) %>.actions';
 import {
   adapter,
   initialState,
-  {{ classify_name }}State
-} from '../state/{{ dasherize_name }}.state';
+  <%= classify(name) %>State
+} from '../state/<%= dasherize(name) %>.state';
 
-export const {{ dasherize_name }}Reducer = createReducer(
+export const <%= dasherize(name) %>Reducer = createReducer(
   initialState,
 
   // 🔁 Load All
-  on({{ classify_name }}Actions.load{{ classify_name }}s, (state, { limit, offset }) => ({
+  on(<%= classify(name) %>Actions.load<%= classify(name) %>s, (state, { limit, offset }) => ({
     ...state,
     loading: true,
     limit: limit ?? state.limit,
@@ -19,7 +19,7 @@ export const {{ dasherize_name }}Reducer = createReducer(
       limit && offset !== undefined ? Math.floor(offset / limit) + 1 : state.currentPage,
   })),
 
-  on({{ classify_name }}Actions.load{{ classify_name }}sSuccess, (state, { data, total }) =>
+  on(<%= classify(name) %>Actions.load<%= classify(name) %>sSuccess, (state, { data, total }) =>
     adapter.setAll(data, {
       ...state,
       loading: false,
@@ -27,20 +27,20 @@ export const {{ dasherize_name }}Reducer = createReducer(
     })
   ),
 
-  on({{ classify_name }}Actions.load{{ classify_name }}sFailure, (state, { error }) => ({
+  on(<%= classify(name) %>Actions.load<%= classify(name) %>sFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error,
   })),
 
   // 🔍 Load By ID
-  on({{ classify_name }}Actions.load{{ classify_name }}ById, (state, { id }) => ({
+  on(<%= classify(name) %>Actions.load<%= classify(name) %>ById, (state, { id }) => ({
     ...state,
     loading: true,
     selectedId: id.toString(),
   })),
 
-  on({{ classify_name }}Actions.load{{ classify_name }}ByIdSuccess, (state, { data }) =>
+  on(<%= classify(name) %>Actions.load<%= classify(name) %>ByIdSuccess, (state, { data }) =>
     adapter.upsertOne(data, {
       ...state,
       loading: false,
@@ -48,24 +48,24 @@ export const {{ dasherize_name }}Reducer = createReducer(
     })
   ),
 
-  on({{ classify_name }}Actions.load{{ classify_name }}ByIdFailure, (state, { error }) => ({
+  on(<%= classify(name) %>Actions.load<%= classify(name) %>ByIdFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error,
   })),
 
   // ➕ Add
-  on({{ classify_name }}Actions.add{{ classify_name }}Success, (state, { data }) =>
+  on(<%= classify(name) %>Actions.add<%= classify(name) %>Success, (state, { data }) =>
     adapter.addOne(data, state)
   ),
 
   // ✏️ Update
-  on({{ classify_name }}Actions.update{{ classify_name }}Success, (state, { data }) =>
+  on(<%= classify(name) %>Actions.update<%= classify(name) %>Success, (state, { data }) =>
     adapter.updateOne({ id: data.id, changes: data }, state)
   ),
 
   // ❌ Delete
-  on({{ classify_name }}Actions.delete{{ classify_name }}Success, (state, { id }) =>
+  on(<%= classify(name) %>Actions.delete<%= classify(name) %>Success, (state, { id }) =>
     adapter.removeOne(id, state)
   )
 );

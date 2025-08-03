@@ -1,7 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { {{ classify_name }}Dto } from '../../models/{{ dasherize_name }}.model';
+import { <%= classify(name) %>Dto } from '../../models/<%= dasherize(name) %>.model';
 
-export interface {{ classify_name }}State extends EntityState<{{ classify_name }}Dto> {
+export interface <%= classify(name) %>State extends EntityState<<%= classify(name) %>Dto> {
   loading: boolean;
   error: string | null;
   total: number;
@@ -11,10 +11,10 @@ export interface {{ classify_name }}State extends EntityState<{{ classify_name }
   selectedId: string | null;
 }
 
-export const adapter: EntityAdapter<{{ classify_name }}Dto> =
-  createEntityAdapter<{{ classify_name }}Dto>();
+export const adapter: EntityAdapter<<%= classify(name) %>Dto> =
+  createEntityAdapter<<%= classify(name) %>Dto>();
 
-export const initialState: {{ classify_name }}State = adapter.getInitialState({
+export const initialState: <%= classify(name) %>State = adapter.getInitialState({
   loading: false,
   error: null,
   total: 0,

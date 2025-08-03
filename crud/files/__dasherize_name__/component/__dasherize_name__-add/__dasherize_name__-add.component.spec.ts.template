@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { {{ classify_name }}AddComponent } from './{{ dasherize_name }}-add.component';
+import { <%= classify(name) %>AddComponent } from './<%= dasherize(name) %>-add.component';
 
-describe('{{ classify_name }}AddComponent', () => {
-  let component: {{ classify_name }}AddComponent;
-  let fixture: ComponentFixture<{{ classify_name }}AddComponent>;
+describe('<%= classify(name) %>AddComponent', () => {
+  let component: <%= classify(name) %>AddComponent;
+  let fixture: ComponentFixture<<%= classify(name) %>AddComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ {{ classify_name }}AddComponent ],
+      declarations: [ <%= classify(name) %>AddComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent({{ classify_name }}AddComponent);
+    fixture = TestBed.createComponent(<%= classify(name) %>AddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
