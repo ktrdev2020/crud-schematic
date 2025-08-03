@@ -1,0 +1,45 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Create{{ classify name }}Dto } from '../../models/{{ dasherize name }}.model';
+import * as {{ classify name }}Actions from '../../store/actions/{{ dasherize name }}.actions';
+import { {{ classify name }}ApiService} from '../../services/{{ dasherize name }}-api.service';
+
+@Component({
+  selector: 'app-{{ dasherize name }}-add',
+  templateUrl: './{{ dasherize name }}-add.component.html',
+  styleUrls: ['./{{ dasherize name }}-add.component.scss'],
+  standalone: false,
+})
+export class {{ classify name }}AddComponent implements OnInit {
+  form!: FormGroup;
+ 
+  constructor(
+    private fb: FormBuilder,
+    private store: Store,
+    private apiService: {{ classify name }}ApiService
+  ) {
+    console.log("📄 {{ classify name }}");
+  }
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      Id: [null, Validators.required],
+      Name: [null, Validators.required]
+    });
+
+  }
+
+  onSubmit(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const dto: Create{{ classify name }}Dto = this.form.value;
+    console.log("🚀 DTO ที่จะส่ง:", dto);
+
+    this.store.dispatch({{ classify name }}Actions.add{{ classify name }}({ data: dto }));
+  }
+
+}

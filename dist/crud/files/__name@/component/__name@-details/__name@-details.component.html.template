@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="../{{ classify name }}" routerDirection="root"></ion-back-button>
+    </ion-buttons>
+    <ion-title>รายละเอียด {{ classify name }} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" [routerLink]="['./edit']" [state]="{ data: item }">
+        <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="has-footer" [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="circles"></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="item as items; else noDevice">
+    <!-- ✅ ข้อมูล Device หลัก -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ item.Name }}</ion-card-title>
+        <ion-card-subtitle>
+          รายละเอียดย่อย
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Id</ion-label>
+            <ion-note slot="end">{{ item.Id || '-' }}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-note slot="end">{{ item.Name || '-' }}</ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+  <!-- ✅ Spinner โหลด -->
+  <app-loading *ngIf="loading$ | async"></app-loading>
+
+  <!-- ❌ ไม่มีข้อมูล -->
+  <ng-template  #noDevice>
+    <ion-text color="medium">
+      <p class="ion-text-center ion-padding">ไม่พบข้อมูลอุปกรณ์</p>
+    </ion-text>
+  </ng-template>
+</ion-content>

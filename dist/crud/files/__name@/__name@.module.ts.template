@@ -1,0 +1,48 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { IonicModule } from '@ionic/angular';
+import { LoadingComponent } from '../shared/component/loading/loading.component';
+
+import { {{ classify name }}RoutingModule } from './{{ dasherize name }}-routing.module';
+
+// 🔌 Device
+import { {{ classify name }}ListComponent } from './component/{{ dasherize name }}-list/{{ dasherize name }}-list.component';
+import { {{ classify name }}DetailComponent } from './component/{{ dasherize name }}-detail/{{ dasherize name }}-detail.component';
+import { {{ classify name }}EditComponent } from './component/{{ dasherize name }}-edit/{{ dasherize name }}-edit.component';
+import { {{ classify name }}AddComponent } from './component/{{ dasherize name }}-edit/{{ dasherize name }}-edit.component';
+
+
+import { {{ classify name }}Reducer } from './store/reducers/{{ dasherize name }}.reducer';
+import { {{ classify name }}Effects } from './store/effects/{{ dasherize name }}.effects';
+
+
+
+// ✅ NgRx
+
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule,
+    {{ classify name }}RoutingModule,
+
+    // ✅ Register Store & Effects
+    StoreModule.forFeature('{{ classify name }}', {{ classify name }}Reducer),
+    EffectsModule.forFeature([{{ classify name }}Effects]),
+  ],
+  declarations: [
+
+    // {{ classify name }}
+    {{ classify name }}ListComponent,
+    {{ classify name }}AddComponent,
+    {{ classify name }}DetailComponent,
+    {{ classify name }}EditComponent,
+    LoadingComponent,
+  ],
+})
+export class {{ classify name }}Module {}

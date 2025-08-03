@@ -1,35 +1,55 @@
-
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { update{{ '{{' {{ '}}' }} classify name {{ '}}' }}, load{{ '{{' {{ '}}' }} classify name {{ '}}' }} } from '../../store/actions/{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}.actions';
-import { select{{ '{{' {{ '}}' }} classify name {{ '}}' }}ById } from '../../store/selectors/{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}.selectors';
+import { Create{{ classify name }}Dto, Update{{ classify name }}Dto } from '../../models/{{ dasherize name }}.model';
+import * as {{ classify name }}Actions from 'src/app/admin/store/actions/{{ dasherize name }}.actions';
+import { {{ classify name }}ApiService} from '../../services/{{ dasherize name }}-api.service';
 
 @Component({
-  selector: 'app-{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}-edit',
-  templateUrl: './{{ '{{' {{ '}}' }} dasherize name {{ '}}' }}-edit.component.html',
-  standalone: false
+  selector: 'app-{{ dasherize name }}-edit',
+  templateUrl: './{{ dasherize name }}-edit.component.html',
+  styleUrls: ['./{{ dasherize name }}-edit.component.scss'],
+  standalone: false,
 })
-export class {{ '{{' {{ '}}' }} classify name {{ '}}' }}EditComponent implements OnInit {
+export class {{ classify name }}EditComponent implements OnInit {
   form!: FormGroup;
   id!: number;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private store: Store) {}
+  constructor(
+    private fb: FormBuilder,
+    private store: Store,
+    private router: Router,
+    private apiService: {{ classify name }}ApiService
+  ) {}
 
-  ngOnInit() {
-    this.id = +this.route.snapshot.params['id'];
-    this.store.dispatch(load{{ '{{' {{ '}}' }} classify name {{ '}}' }}());
-    this.store.select(select{{ '{{' {{ '}}' }} classify name {{ '}}' }}ById(this.id)).subscribe(data => {
-      if (data) {
-        this.form = this.fb.group({ {{ '{{' {{ '}}' }}~ modelFields.map(f => `${f.key}: [data.${f.key}]`).join(',\n') ~{{ '}}' }} });
-      }
+  ngOnInit(): void {
+    const nav = this.router.getCurrentNavigation();
+    const data = nav?.extras?.state?.['data'] as {{ classify name }}Dto;
+    
+    if (!data) {
+      this.router.navigateByUrl('../{{ classify name }}');
+      return;
+    }
+
+    this.id = data.id;
+
+    this.form = this.fb.group({
+      Id: [null, Validators.required],
+      Name: [null, Validators.required]
     });
+
+    this.form.patchValue(data); // ✅ ใส่ข้อมูลเดิม
   }
 
-  submit() {
-    if (this.form.valid) {
-      this.store.dispatch(update{{ '{{' {{ '}}' }} classify name {{ '}}' }}({ id: this.id, data: this.form.value }));
+  onSubmit(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
     }
+
+    const dto: Update{{ classify name }}Dto = this.form.value;
+    console.log(dto);
+    this.store.dispatch({{ classify name }}Actions.update{{ classify name }}({ id: this.id, data: dto }));
   }
 }

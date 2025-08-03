@@ -1,3 +1,20 @@
-export interface {{ '{{' {{ '}}' }} classify name {{ '}}' }}Model {
-  {{ '{{' {{ '}}' }}~ modelFields.map(f => `${f.key}: ${f.type};`).join('\n  ') ~{{ '}}' }}
+export interface {{ classify name }}Dto extends any {
+  Id: string,
+  Name : string,
 }
+
+export interface {{ classify name }}DetailDto extends {{ classify name }}Dto {
+  Id : number,
+  details: string
+}
+
+export interface Create{{ classify name }}Dto extends {{ classify name }}Dto {
+  createDate : string
+}
+
+
+export interface Update{{ classify name }}Dto extends Create{{ classify name }}Dto {
+  id: string,
+  updateDate : string;
+}
+
