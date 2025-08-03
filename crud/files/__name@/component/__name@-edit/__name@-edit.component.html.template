@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="../{{ classify name }}" routerDirection="root"></ion-back-button>
+      <ion-back-button defaultHref="../{{ '{{' }} classify name {{ '}}' }}" routerDirection="root"></ion-back-button>
     </ion-buttons>
     <ion-title>แก้ไขข้อมูลอุปกรณ์</ion-title>
     <ion-buttons slot="end">
@@ -25,7 +25,6 @@
       <ion-label position="stacked">Name</ion-label>
       <ion-input formControlName="Name"></ion-input>
     </ion-item>
-
 
     <ion-button expand="block" type="submit" [disabled]="form.invalid">บันทึกข้อมูล</ion-button>
   </form>

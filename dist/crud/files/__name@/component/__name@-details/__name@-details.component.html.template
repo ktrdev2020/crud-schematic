@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="../{{ dasherize name }}" routerDirection="root"></ion-back-button>
+      <ion-back-button defaultHref="../{{ '{{' }} dasherize name {{ '}}' }}" routerDirection="root"></ion-back-button>
     </ion-buttons>
-    <ion-title>รายละเอียด {{ classify name }}</ion-title>
+    <ion-title>รายละเอียด {{ '{{' }} classify name {{ '}}' }}</ion-title>
     <ion-buttons slot="end">
       <ion-button color="light" [routerLink]="['./edit']" [state]="{ data: item }">
         <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
