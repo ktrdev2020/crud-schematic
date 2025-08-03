@@ -9,6 +9,7 @@ function crud(options) {
         const name = options.name;
         const dasherizedName = core_1.strings.dasherize(name);
         const targetPath = `src/app/${dasherizedName}`;
+        const templateFile = `./files/${dasherizedName}`;
         context.logger.info(`🚀 Starting schematic for: ${name}`);
         context.logger.info(`📦 Output path: ${targetPath}`);
         context.logger.info(`📁 Template path: ./files`);

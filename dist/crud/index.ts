@@ -20,6 +20,7 @@ export function crud(options: any): Rule {
     const name = options.name;
     const dasherizedName = strings.dasherize(name);
     const targetPath = `src/app/${dasherizedName}`;
+    const templateFile = `./files/${dasherizedName}`;
 
     context.logger.info(`🚀 Starting schematic for: ${name}`);
     context.logger.info(`📦 Output path: ${targetPath}`);
