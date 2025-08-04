@@ -1,6 +1,6 @@
 {
   "name": "@ktrdev2020/crud-schematic",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Reusable Angular + Ionic NgRx CRUD schematic",
   "schematics": "./dist/collection.json",
   "main": "dist/index.js",
