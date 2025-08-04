@@ -17,7 +17,7 @@ export class <%= classify(name) %>DetailsComponent implements OnInit {
   <%= classify(name) %>Id!: number;
   loading$!: Observable<boolean>;
   <%= classify(name) %>List$?: Observable<<%= classify(name) %>DetailDto>;
-  items? : <%= classify(name) %>DetailsDto;
+  items? : <%= classify(name) %>DetailDto;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,21 +28,21 @@ export class <%= classify(name) %>DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const nav = this.router.getCurrentNavigation();
-    this.items = nav?.extras?.state?.['data'] as <%= classify(name) %>DetailsDto;
+    this.items = nav?.extras?.state?.['data'] as <%= classify(name) %>DetailDto;
 
-    if (!this.items?.id) {
+    if (!this.items?.Id) {
       // ถ้าไม่มี device ส่งมา กลับไปหน้าหลัก
       this.router.navigateByUrl('../<%= classify(name) %>');
       return;
     }
 
-    this.<%= classify(name) %>Id = Number(this.items.id);
+    this.<%= classify(name) %>Id = Number(this.items.Id);
 
     // dispatch store
     this.store.dispatch(<%= classify(name) %>Actions.load<%= classify(name) %>ById({ id: this.<%= classify(name) %>Id }));
 
     // ✅ ดึงรายการจุดควบคุมจาก API
-    this.<%= classify(name) %>Details$ = this.store.select(<%= classify(name) %>Selectors.select<%= classify(name) %>ById(this.<%= classify(name) %>Id.toString()));
+    this.<%= classify(name) %>List$ = this.store.select(<%= classify(name) %>Selectors.select<%= classify(name) %>ById(this.<%= classify(name) %>Id.toString()));
 
     // ✅ สถานะ Loading จาก store
     this.loading$ = this.store.select(<%= classify(name) %>Selectors.select<%= classify(name) %>Loading);

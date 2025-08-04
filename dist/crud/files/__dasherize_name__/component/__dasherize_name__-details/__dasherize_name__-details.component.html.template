@@ -17,7 +17,7 @@
     <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="circles"></ion-refresher-content>
   </ion-refresher>
 
-  <ng-container *ngIf="item as items; else noDevice">
+  <ng-container *ngIf="items as item; else noDevice">
     <!-- ✅ ข้อมูล Device หลัก -->
     <ion-card>
       <ion-card-header>
