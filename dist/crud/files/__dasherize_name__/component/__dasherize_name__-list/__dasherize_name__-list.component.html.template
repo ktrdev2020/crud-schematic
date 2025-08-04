@@ -17,8 +17,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <!-- ✅ Loading -->
-  <app-loading *ngIf="loading$ | async"></app-loading>
+  
 
   <!-- ✅ Error -->
   <ion-note color="danger" *ngIf="error$ | async as error" class="ion-padding">

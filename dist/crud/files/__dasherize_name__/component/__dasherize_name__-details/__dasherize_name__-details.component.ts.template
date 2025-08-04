@@ -17,7 +17,7 @@ export class <%= classify(name) %>DetailsComponent implements OnInit {
   <%= classify(name) %>Id!: number;
   loading$!: Observable<boolean>;
   <%= classify(name) %>List$?: Observable<<%= classify(name) %>DetailDto>;
-  items? : any;
+  items? : <%= classify(name) %>DetailsDto;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class <%= classify(name) %>DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const nav = this.router.getCurrentNavigation();
-    this.items = nav?.extras?.state?.['data'];
+    this.items = nav?.extras?.state?.['data'] as <%= classify(name) %>DetailsDto;
 
     if (!this.items?.id) {
       // ถ้าไม่มี device ส่งมา กลับไปหน้าหลัก
