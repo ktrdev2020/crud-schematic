@@ -12,20 +12,16 @@ const routes: Routes = [
     component: <%= classify(name) %>ListComponent
   },
   {
-    path: '<%= dasherize(name) %>',
-    component: <%= classify(name) %>ListComponent
+    path: 'add',
+    component: <%= classify(name) %>AddComponent
   },
   {
-    path: '<%= dasherize(name) %>/:id',
+    path: ':id',
     component: <%= classify(name) %>DetailsComponent
   },
   {
-    path: '<%= dasherize(name) %>/:id/edit',
+    path: ':id/edit',
     component: <%= classify(name) %>EditComponent
-  },
-  {
-    path: '<%= dasherize(name) %>/add',
-    component: <%= classify(name) %>AddComponent
   }
 ];
 
