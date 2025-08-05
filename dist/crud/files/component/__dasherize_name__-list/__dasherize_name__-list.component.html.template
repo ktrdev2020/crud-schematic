@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>รายการข้อมูล <%= classify(name) %></ion-title>
     <ion-buttons slot="end">
-      <ion-button color="light" routerLink="/add">
+      <ion-button color="light" routerLink="./add">
         <ion-icon name="add-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -28,7 +28,7 @@
   <ng-container *ngIf="items$ | async as item">
     <ng-container *ngIf="item.length > 0; else noDevices">
       <ion-list>
-        <ion-item *ngFor="let data of item" button detail [routerLink]="['./' + data.id]" [state]="{ data: data }">
+        <ion-item *ngFor="let data of item" button detail [routerLink]="['./' + data.Id]" [state]="{ data: data }">
             <ion-label>
               {{ data.Id }}
             </ion-label>
